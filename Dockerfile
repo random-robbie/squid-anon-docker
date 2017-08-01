@@ -6,7 +6,7 @@ LABEL Description="Docker image for Squid based on the offical Alpine Linux imag
 RUN apk add \
     --no-cache \
     --update \
-    squid
+    squid bash gawk sed grep bc coreutils nano
 
 ADD squid.conf /etc/squid/squid.conf
 
