@@ -1,21 +1,13 @@
 FROM alpine:latest
-MAINTAINER txt3rob <txt3rob@gmail.com>
-LABEL Description="Docker image for Squid based on the offical Alpine Linux image"
-
-# Install Squid
-RUN apk add \
-    --no-cache \
-    --update \
-    squid bash gawk sed grep bc coreutils nano
-
-ADD squid.conf /etc/squid/squid.conf
-
-# Expose port
+MAINTAINER random_robbie <txt3rob@gmail.com>
+RUN apk update \
+    && apk add squid \
+    && apk add curl \
+    && apk add apache2-utils \
+    && rm -rf /var/cache/apk/*
+RUN mkdir /usr/etc
+COPY squid.conf /etc/squid/squid.conf
 EXPOSE 3128
-
-# Create swap directories
-RUN /usr/sbin/squid -Nz -f /etc/squid/squid.conf
-
-
-
-ENTRYPOINT ["/usr/sbin/squid", "-N", "-Y", "-C", "-d", "1", "-f", "/etc/squid/squid.conf"]
+VOLUME /var/log/squid
+ADD init /init
+CMD ["/init"]
