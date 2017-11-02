@@ -2,6 +2,16 @@
 
 A simple Dockerfile for launching an authenticated squid proxy.
 
+Me browsing in the UK via a VPS in india.
+
+[![Capture.png](https://s1.postimg.org/1l3erm9ojz/Capture.png)](https://postimg.org/image/2dga9cqaa3/)
+
+
+
+
+
+
+
 The user must specify authentication credentials via the following environment variables:
 
 ```
