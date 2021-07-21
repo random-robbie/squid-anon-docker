@@ -13,7 +13,7 @@ SQUID_PASSWORD=bar
 An example invocation would be:
 
 ```
-docker run -e SQUID_USERNAME=foo -e SQUID_PASSWORD=bar -p 3128:3128 txt3rob/squid-anon-docker
+docker run -d -e SQUID_USERNAME=foo -e SQUID_PASSWORD=bar -p 3128:3128 --dns 8.8.8.8 txt3rob/squid-anon-docker
 ```
 
 ALL headers from squid are removed to ensure anon.
